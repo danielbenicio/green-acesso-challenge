@@ -8,7 +8,14 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: ['Poppins', 'sans-serif'],
+    },
+    extend: {
+      backgroundImage: {
+        app: `url('/background.png')`,
+      },
+    },
   },
   plugins: [],
 }
