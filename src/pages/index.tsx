@@ -1,34 +1,104 @@
-import Image from 'next/image'
-import { CaretDoubleDown } from 'phosphor-react'
+import { Fragment, useRef } from 'react'
+import { dehydrate, QueryClient, useQuery } from 'react-query'
 
-import logoHbo from '../assets/logo-hbo.svg'
-import logoRickAndMorty from '../assets/logo-rick-and-morty.svg'
+import { Input } from '@/components/input'
+import { CharacterCard } from '@/components/sections/character-card'
+import Hero from '@/components/sections/hero'
+import Spinner from '@/components/spinner'
+import { CharacterResponse, Info } from '@/entities/api-response'
+import { chunkArray } from '@/utils/chunk-array'
+import axios from 'axios'
+import { GetServerSideProps } from 'next'
+import { CaretLeft, CaretRight, Star } from 'phosphor-react'
+
+type ApiRickMortyResponse = {
+  info: Info
+  results: CharacterResponse[]
+}
 
 export default function Home() {
-  return (
-    <div className="bg-app w-[100vw] h-[100vh] bg-cover bg-center flex items-center">
-      <header className="w-full flex absolute top-8 justify-between px-32">
-        <Image src={logoRickAndMorty} alt="logo da série rick and morty" quality={100} />
-        <a className="flex h-10 w-64 bg-white rounded gap-3 items-center justify-center transition-all duration-200 hover:brightness-90 cursor-pointer">
-          <span className="font-bold text-sm opacity-80">Assistir em</span>
-          <Image src={logoHbo} alt="logo do serviço de streaming hbo max" />
-        </a>
-      </header>
+  const sectionRef = useRef<HTMLDivElement>(null)
 
-      <div className="w-[1000px] flex flex-col px-32">
-        <h1 className="font-bold text-4xl text-white leading-[54px] mb-4">
-          Conheça os personagens dessa incrível série de ficção científica e comédia
-        </h1>
-        <span className="font-semibold text-lg text-white opacity-70 leading-7 mb-8">
-          Os personagens de Rick and Morty são únicos e diversificados, variando de uma inteligência
-          superdotada e sociopata a um adolescente ansioso e ingênuo, formando um elenco intrigante
-          e divertido.
-        </span>
-        <button className="flex py-3 w-64 bg-white rounded gap-3 items-center transition-all duration-200 hover:brightness-90 justify-center">
-          <span className="font-bold opacity-80">Ver personagens</span>
-          <CaretDoubleDown size={20} />
-        </button>
-      </div>
-    </div>
+  function handleAccessCharactersSection() {
+    sectionRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const { data, isLoading } = useQuery('characters', () =>
+    axios
+      .get<ApiRickMortyResponse>('https://rickandmortyapi.com/api/character/')
+      .then(response => response.data)
   )
+
+  if (isLoading)
+    return (
+      <div className="w-full h-[100vh] flex items-center justify-center bg-app">
+        <Spinner />
+      </div>
+    )
+
+  const characterGroups = chunkArray(data?.results || [], 4)
+
+  return (
+    <Fragment>
+      <Hero onAccessCharactersSection={handleAccessCharactersSection} />
+      <div className="bg-app" ref={sectionRef}>
+        <div className="px-32 pt-12 w-full flex justify-between mb-16">
+          <Input />
+          <button className="h-14 w-14 bg-brand flex justify-center items-center rounded-lg">
+            <Star size={32} color="#060B28" />
+          </button>
+        </div>
+
+        <div className="flex flex-col gap-12 mb-14">
+          {characterGroups.map((group, index) => (
+            <div key={`group-${index}`} className="px-32 flex gap-32">
+              {group.map(character => (
+                <CharacterCard
+                  key={`character-${character.id}`}
+                  characterPicture={character.image}
+                  characterName={character.name}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+
+        <div className="w-full items-center justify-center flex pb-8">
+          <CaretLeft size={20} color="#00B5CC" weight="bold" className="mr-3" />
+          <div className="flex gap-2">
+            <button className="w-10 h-10 flex items-center justify-center rounded-lg text-brand bg-app font-bold text-base border border-brand transition-all duration-200 hover:bg-brand hover:text-app">
+              1
+            </button>
+            <button className="w-10 h-10 flex items-center justify-center rounded-lg text-brand bg-app font-bold text-base border border-brand transition-all duration-200 hover:bg-brand hover:text-app">
+              2
+            </button>
+            <button className="w-10 h-10 flex items-center justify-center rounded-lg text-brand bg-app font-bold text-base border border-brand transition-all duration-200 hover:bg-brand hover:text-app">
+              3
+            </button>
+            <button className="w-10 h-10 flex items-center justify-center rounded-lg text-brand bg-app font-bold text-base border border-brand transition-all duration-200 hover:bg-brand hover:text-app">
+              4
+            </button>
+            <button className="w-10 h-10 flex items-center justify-center rounded-lg text-brand bg-app font-bold text-base border border-brand transition-all duration-200 hover:bg-brand hover:text-app">
+              5
+            </button>
+          </div>
+          <CaretRight size={20} color="#00B5CC" weight="bold" className="ml-3" />
+        </div>
+      </div>
+    </Fragment>
+  )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const queryClient = new QueryClient()
+
+  await queryClient.fetchQuery('characters', () =>
+    axios.get('https://rickandmortyapi.com/api/character/').then(response => response.data)
+  )
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  }
 }

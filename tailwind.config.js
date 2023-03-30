@@ -1,4 +1,5 @@
 module.exports = {
+  plugins: [require('tailwind-scrollbar')],
   content: [
     './app/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -12,10 +13,16 @@ module.exports = {
       sans: ['Poppins', 'sans-serif'],
     },
     extend: {
+      colors: {
+        brand: '#00B5CC',
+        app: '#060B28',
+      },
       backgroundImage: {
-        app: `url('/background.png')`,
+        hero: `url('/background.png')`,
+      },
+      backgroundColor: {
+        app: '#060B28',
       },
     },
   },
-  plugins: [],
 }

@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Exemplo de personalização */
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #E89AC7;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #97CE4C;
+}
