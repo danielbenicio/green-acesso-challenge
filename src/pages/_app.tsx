@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import { useState } from 'react'
 import { QueryClient, QueryClientProvider, Hydrate } from 'react-query'
 
+import { FavoritedCharacterContextProvider } from '@/hooks/use-get-favorite-characters'
 import type { AppProps } from 'next/app'
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -10,7 +11,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
-        <Component {...pageProps} />
+        <FavoritedCharacterContextProvider>
+          <Component {...pageProps} />
+        </FavoritedCharacterContextProvider>
       </Hydrate>
     </QueryClientProvider>
   )

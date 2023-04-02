@@ -1,38 +1,70 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<img src="./.github/banner.png" alt="Banner" />
 
-## Getting Started
+# Green Acesso - Rick and Morty Challenge
 
-First, run the development server:
+Este projeto foi desenvolvido como parte de um challenge da empresa Green Acesso. O objetivo do challenge era criar um aplicativo que lista todos os personagens da série Rick and Morty, permitindo a paginação, favoritar personagens e filtrar personagens, com um layout responsivo.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Tecnologias Utilizadas
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Neste projeto, foram utilizadas as seguintes tecnologias:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- **NextJS**: um framework para React que fornece recursos como renderização do lado do servidor, geração de páginas estáticas e dinâmicas e muito mais.
+- **Axios**: uma biblioteca JavaScript que fornece uma interface simples para fazer requisições HTTP.
+- **TypeScript**: um superset de JavaScript que adiciona tipagem estática à linguagem.
+- **PhosphorIcons**: uma biblioteca de ícones com mais de 20.000 ícones.
+- **React Query**: uma biblioteca que gerencia o estado de dados em aplicativos React, simplificando o gerenciamento de cache, atualizações e muito mais.
+- **React Slick**: uma biblioteca de slider/carrossel de imagens para React.
+- **Tailwind CSS**: uma biblioteca de classes CSS pré-definidas que facilita a criação de layouts responsivos e personalizados.
+- **Commitlint**: uma ferramenta que ajuda a manter as mensagens de commit padronizadas em um projeto.
+- **ESLint**: uma ferramenta de análise de código estático que ajuda a identificar e corrigir problemas em um código JavaScript/TypeScript.
+- **Husky**: um utilitário que permite adicionar ganchos (hooks) para executar ações antes ou depois de certos eventos do Git, como commit, push, etc.
+- **Jest**: um framework de teste de JavaScript com uma sintaxe simples e fácil de aprender.
+- **Prettier**: uma ferramenta que formata o código automaticamente com base em um conjunto de regras definidas.
+- **Commitzen**: um utilitário que fornece um conjunto de convenções para escrever mensagens de commit claras e concisas.
+- **Testing Library**: uma biblioteca que fornece uma API para escrever testes de componentes React e que enfatiza a interação do usuário com a interface, em vez de testar a implementação interna.
+- **Mantine Hooks (useDebouncedValue e usePagination)**: uma coleção de hooks personalizados para React que oferecem funcionalidades extras, como debounce de valores de entrada e paginização de dados, melhorando a performance e a experiência do usuário.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Estrutura do Projeto
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- `pages`: diretório com as páginas da aplicação;
+- `components`: diretório com os componentes da aplicação;
+- `styles`: diretório com os arquivos de estilos globais;
+- `entities`: diretório com as entidades da aplicação, como modelos de dados;
+- `utils`: diretório com utilidades e funções auxiliares da aplicação;
+- `assets`: diretório com os arquivos estáticos da aplicação, como imagens e fontes.
+- `__tests__`: diretório com os testes unitários.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Design
 
-## Learn More
+O design do projeto foi criado utilizando o Figma. O link do projeto pode ser encontrado [aqui](https://www.figma.com/file/FVP6b3xMEaHplgGRX7kBIr/Green-Access---R%26M?node-id=0%3A1&t=gsBBzBaNmDje9jRm-1).
 
-To learn more about Next.js, take a look at the following resources:
+## Instalação e Uso
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Clone o repositório: `git clone https://github.com/danielbenicio/green-acesso-challenge.git`
+- Acesse o diretório do projeto: `cd green-acesso-challenge`
+- Instale as dependências: `pnpm install`
+- Inicie o servidor de desenvolvimento: `pnpm run dev`
+- Acesse a aplicação no navegador: `http://localhost:3000`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+OBS: Caso não tenha o instalador de pacotes `pnpm`, utilize o comando `npm install -g pnpm`
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Como Executar os Testes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Para executar os testes unitários do projeto, utilize o seguinte comando: `pnpm test`.
+
+## Deploy
+
+A Vercel é uma plataforma de computação em nuvem que permite a hospedagem e o deployment (implantação) de sites e aplicativos na web de maneira rápida e fácil. A plataforma é construída com base no conceito de Jamstack, que enfatiza a separação do front-end e do back-end e o uso de ferramentas modernas de desenvolvimento web, como React, Next.js e GraphQL.
+
+Você pode acessar o projeto clicando [aqui](google.com).
+
+
+## Contato
+
+Email: danielbenicio123@gmail.com
+
+Linkedin: https://www.linkedin.com/in/danielbenicio/
+
+
+
