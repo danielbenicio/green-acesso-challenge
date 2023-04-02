@@ -57,7 +57,7 @@ Para executar os testes unitários do projeto, utilize o seguinte comando: `pnpm
 
 A Vercel é uma plataforma de computação em nuvem que permite a hospedagem e o deployment (implantação) de sites e aplicativos na web de maneira rápida e fácil. A plataforma é construída com base no conceito de Jamstack, que enfatiza a separação do front-end e do back-end e o uso de ferramentas modernas de desenvolvimento web, como React, Next.js e GraphQL.
 
-Você pode acessar o projeto clicando [aqui](https://green-acesso-challenge-self.vercel.app/#cards).
+Você pode acessar o projeto clicando [aqui](https://green-acesso-challenge-self.vercel.app/).
 
 
 ## Contato
