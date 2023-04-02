@@ -1,31 +1,61 @@
+import { CharacterResponse } from '@/entities/api-response'
 import Image from 'next/image'
-import { Lightning } from 'phosphor-react'
+import Link from 'next/link'
+import { Heart, Lightning, Star } from 'phosphor-react'
 
 type CharacterCardProps = {
-  characterPicture: string
-  characterName: string
+  isFavorited: boolean
+  character: CharacterResponse
+  onFavoriteCharacter: (character: CharacterResponse) => void
+  onUnfavoriteCharacter: (character: CharacterResponse) => void
 }
 
-export function CharacterCard({ characterPicture, characterName }: CharacterCardProps) {
+export function CharacterCard({
+  isFavorited,
+  character,
+  onFavoriteCharacter,
+  onUnfavoriteCharacter,
+}: CharacterCardProps) {
   return (
     <div>
       <div className="w-full h-12 rounded-t-lg bg-brand flex items-center justify-center gap-2">
-        <span className="font-bold text-base text-app">{characterName}</span>
+        <span className="font-bold text-base text-app">{character.name}</span>
       </div>
-      <div className="w-80 h-80">
+      <div className="w-full h-80 relative">
+        {isFavorited ? (
+          <button
+            className="absolute top-0 right-0 m-1 w-10 h-10 rounded bg-[#DAEFBE] z-30 opacity-50 flex items-center justify-center transition-all duration-200 hover:opacity-100"
+            onClick={() => onUnfavoriteCharacter(character)}
+          >
+            <Heart size={24} className="text-[#97CE4C]" />
+          </button>
+        ) : (
+          <button
+            onClick={() => onFavoriteCharacter(character)}
+            className="absolute top-0 right-0 m-1 w-10 h-10 rounded bg-[#EBFDFF] z-30 opacity-50 flex items-center justify-center transition-all duration-200 hover:opacity-100"
+          >
+            <Star size={24} className="text-brand" />
+          </button>
+        )}
+
         <Image
-          src={characterPicture}
+          src={character.image}
           alt="imagem do personagem"
           className="h-full w-full opacity-95"
-          width={100}
-          height={100}
+          width={500}
+          height={300}
+          placeholder="blur"
+          blurDataURL="/fallback-image.webp"
           quality={100}
         />
       </div>
-      <button className="w-full h-12 rounded-b-lg bg-brand flex items-center justify-center gap-2 transition-all duration-200 hover:brightness-95">
+      <Link
+        className="w-full h-12 rounded-b-lg bg-brand flex items-center justify-center gap-2 transition-all duration-200 hover:brightness-95"
+        href={`/character/${character.id}`}
+      >
         <Lightning size={24} color="#060B28" weight="bold" />
         <span className="font-bold text-base text-app">Mais Detalhes</span>
-      </button>
+      </Link>
     </div>
   )
 }

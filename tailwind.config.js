@@ -19,6 +19,7 @@ module.exports = {
       },
       backgroundImage: {
         hero: `url('/background.png')`,
+        'character-page': `url('/bg-character-page.png')`,
       },
       backgroundColor: {
         app: '#060B28',
