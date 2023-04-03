@@ -2,7 +2,7 @@
 
 # Green Acesso - Rick and Morty Challenge
 
-Este projeto foi desenvolvido como parte de um challenge da empresa Green Acesso. O objetivo do challenge era criar um aplicativo que lista todos os personagens da série Rick and Morty, permitindo a paginação, favoritar personagens e filtrar personagens, com um layout responsivo.
+O objetivo do challenge era criar um aplicativo que lista todos os personagens da série Rick and Morty, permitindo a paginação, favoritar personagens e filtrar personagens, com um layout responsivo.
 
 ## Tecnologias Utilizadas
 
