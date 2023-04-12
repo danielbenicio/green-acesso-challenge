@@ -1,6 +1,4 @@
-<img src="./.github/banner.png" alt="Banner" />
-
-# Green Acesso - Rick and Morty Challenge
+# Rick and Morty Challenge
 
 O objetivo do challenge era criar um aplicativo que lista todos os personagens da série Rick and Morty, permitindo a paginação, favoritar personagens e filtrar personagens, com um layout responsivo.
 
